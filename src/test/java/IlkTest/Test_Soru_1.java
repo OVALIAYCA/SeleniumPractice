@@ -9,7 +9,7 @@ public class Test_Soru_1 {
 
     public static void main(String[] args) throws InterruptedException {
 
-        /*
+    /*
      . .Exercise2...
      1-Driver oluşturalim
      2-Java class'imiza chnomedriver.exet i tanitalim
