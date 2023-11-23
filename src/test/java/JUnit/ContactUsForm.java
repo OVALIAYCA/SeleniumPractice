@@ -1,5 +1,6 @@
 package JUnit;
 
+import Utilities.ReusableMethods;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -66,12 +67,13 @@ public class ContactUsForm {
     public void test03() throws InterruptedException {
         //6. Enter name, email, subject and message
         //input[@class='form-control']
+        ReusableMethods.bekle(3);
         driver.findElement(By.xpath("(//input[@class='form-control'])[1]"))
-                .sendKeys("İhsan");
+                .sendKeys("Deniz");
         driver.findElement(By.xpath("(//input[@class='form-control'])[2]"))
-                .sendKeys("altnskihsan@gmail.com");
+                .sendKeys("dnzdnz@gmail.com");
         driver.findElement(By.xpath("(//input[@class='form-control'])[3]"))
-                .sendKeys("Ayça abla sinir oluyor");
+                .sendKeys("hello world");
         driver.findElement(By.xpath("//textarea[@class='form-control']"))
                 .sendKeys("İyi akşamlar");
 
