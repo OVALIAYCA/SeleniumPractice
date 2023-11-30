@@ -1,6 +1,7 @@
 package JUnit;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
+import com.github.javafaker.Faker;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.AfterClass;
 import org.junit.Assert;
@@ -10,6 +11,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.devtools.v85.layertree.model.StickyPositionConstraint;
+import org.openqa.selenium.support.ui.Select;
 
 import javax.print.DocFlavor;
 import java.time.Duration;
@@ -46,6 +49,8 @@ public class RegisterUserTest {
       driver = new ChromeDriver();
       driver.manage().window().maximize();
       driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+      //2. Navigate to url 'http://automationexercise.com'
       driver.navigate().to("http://automationexercise.com");
 
    }
@@ -56,8 +61,11 @@ public class RegisterUserTest {
    }
 
    @Test
-   public void register()
+   public void registerUserTesti()
    {
+     Faker faker = new Faker();
+
+
      // Verify that home page is visible successfully
       WebElement homePage = driver.findElement(By.xpath("(//img[@class='girl img-responsive'])[1]"));
       Assert.assertTrue(homePage.isDisplayed());
@@ -67,18 +75,30 @@ public class RegisterUserTest {
 
      //Verify 'New User Signup!' is visible
       WebElement newUserText = driver.findElement(By.xpath("//h2[text()='New User Signup!']"));
-      Assert.assertTrue(newUserText.isDisplayed());
+      String expectedYazi = "New User Signup!";
+      String actualYazi = newUserText.getText();
+      Assert.assertEquals(expectedYazi,actualYazi);
 
-     //Enter name and email address
-      driver.findElement(By.xpath("//input[@name='name']")).sendKeys("dkdkdk");
-      driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys("dkdk@dkdk.com");
+      //Assert.assertTrue(newUserText.isDisplayed());
+
+       //Enter name and email address
+       String firstlName = faker.name().firstName();
+       String lastName = faker.name().lastName();
+       String email = faker.internet().emailAddress();
+      driver.findElement(By.xpath("//input[@name='name']")).sendKeys(firstlName + " " + lastName);
+      driver.findElement(By.xpath("(//input[@name='email'])[2]")).sendKeys(email);
+      //dinamik hale geldi fakerclass ile.
 
      //Click 'Signup' button
      driver.findElement(By.xpath("(//button[@class='btn btn-default'])[2]")) .click();
 
      // Verify that 'ENTER ACCOUNT INFORMATION' is visible
       WebElement eaiYazi = driver.findElement(By.xpath("//b[text()='Enter Account Information']"));
-      Assert.assertTrue(eaiYazi.isDisplayed());
+      String expectedEnterAccountYazi = "ENTER ACCOUNT INFORMATION";
+      String actualEnterAccountYazi = eaiYazi.getText();
+      Assert.assertEquals(expectedEnterAccountYazi,actualEnterAccountYazi);
+      //Assert.assertTrue(eaiYazi.isDisplayed());
+
 
      //Fill details: Title, Name, Email, Password, Date of birth
       driver.findElement(By.xpath("//input[@id='id_gender1']")).click();
@@ -86,9 +106,23 @@ public class RegisterUserTest {
       driver.findElement(By.xpath("//input[@id='name']")).sendKeys("İhsan");
       driver.findElement(By.xpath("//input[@id='password']")).sendKeys("kola");
 
-      driver.findElement(By.xpath("//option[@value='1']")).click();
-      driver.findElement(By.xpath("(//option[@value='5'])[2]")).click();
-      driver.findElement(By.xpath("//option[@value='1990']")).click();
+      //Date of birth
+       WebElement days = driver.findElement(By.xpath("//*[@id='days']"));
+       Select selectDays = new Select(days);
+       selectDays.selectByValue("5");
+
+       WebElement months = driver.findElement(By.xpath("//*[@id='months']"));
+       Select selectMonths = new Select(months);
+       selectMonths.selectByValue("1");
+
+       WebElement years = driver.findElement(By.xpath("//*[@id='years']"));
+       Select selectYears = new Select(years);
+       selectMonths.selectByValue("1990");
+
+      //driver.findElement(By.xpath("//option[@value='1']")).click();
+      //driver.findElement(By.xpath("(//option[@value='5'])[2]")).click();
+      //driver.findElement(By.xpath("//option[@value='1990']")).click();
+
 
      //Select checkbox 'Sign up for our newsletter!'
       driver.findElement(By.id("newsletter")).click();
