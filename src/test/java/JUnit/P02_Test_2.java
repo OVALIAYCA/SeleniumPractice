@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.time.Duration;
 
-public class C02_Test_2 {
+public class P02_Test_2 {
 
         /**
 BeforeClass ile driver'i oluşturun ve class icinde static yapin

@@ -6,10 +6,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import java.nio.file.WatchEvent;
 import java.time.Duration;
 
-public class C01_Test_1 {
+public class P01_Test_1 {
 
     public static void main(String[] args) throws InterruptedException {
         WebDriver driver = new ChromeDriver();

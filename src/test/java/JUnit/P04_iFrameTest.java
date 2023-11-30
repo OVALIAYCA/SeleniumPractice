@@ -1,13 +1,11 @@
 package JUnit;
 
 import Utilities.TestBase;
-import com.github.javafaker.Team;
-import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-public class C04_iFrameTest extends TestBase {
+public class P04_iFrameTest extends TestBase {
 
     @Test
     public void iframeTest()
@@ -35,7 +33,7 @@ public class C04_iFrameTest extends TestBase {
         // 5- TextBox'in altinda bulunan "Elemental Selenium" link textinin gorunur oldugunu dogrulayin
         //      ve  konsolda yazdirin.
 
-        driver.switchTo().parentFrame();
+        driver.switchTo().defaultContent();
         WebElement elementalYazi = driver.findElement(By.xpath("//*[text()='Elemental Selenium']"));
         if (elementalYazi.isDisplayed()){
             System.out.println("Link Text Görüntülendi. Test PASSED");
