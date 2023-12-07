@@ -1,4 +1,4 @@
-package JUnit;
+package tests.JUnit;
 
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.github.javafaker.Faker;
@@ -78,7 +78,6 @@ public class RegisterUserTest {
       String expectedYazi = "New User Signup!";
       String actualYazi = newUserText.getText();
       Assert.assertEquals(expectedYazi,actualYazi);
-
       //Assert.assertTrue(newUserText.isDisplayed());
 
        //Enter name and email address

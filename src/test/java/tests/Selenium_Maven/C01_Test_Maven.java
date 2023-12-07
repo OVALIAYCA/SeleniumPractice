@@ -1,4 +1,4 @@
-package Selenium_Maven;
+package tests.Selenium_Maven;
 
 import com.google.common.annotations.VisibleForTesting;
 import org.junit.Test;
@@ -24,7 +24,7 @@ public class C01_Test_Maven {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        driver.get("https://www.blzandco.com");
+        driver.get("https://www.wisequarter.com");
         driver.quit();
     }
 

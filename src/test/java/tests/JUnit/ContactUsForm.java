@@ -1,4 +1,4 @@
-package JUnit;
+package tests.JUnit;
 
 import Utilities.ReusableMethods;
 import io.github.bonigarcia.wdm.WebDriverManager;

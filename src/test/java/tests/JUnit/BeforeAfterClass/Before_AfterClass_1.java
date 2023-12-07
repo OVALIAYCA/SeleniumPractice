@@ -1,4 +1,4 @@
-package JUnit.BeforeAfterClass;
+package tests.JUnit.BeforeAfterClass;
 
 import org.junit.*;
 

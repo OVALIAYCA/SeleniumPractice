@@ -1,4 +1,4 @@
-package JUnit.SwitchTo;
+package tests.JUnit.SwitchTo;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

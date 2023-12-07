@@ -1,4 +1,4 @@
-package JUnit;
+package tests.JUnit;
 
 import Utilities.ReusableMethods;
 import Utilities.TestBase;
